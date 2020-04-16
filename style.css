@@ -17,6 +17,17 @@
   height: 500px;
 }
 
+.previewMovie {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.previewMovie.not-visible {
+  transform: translateX(50px);
+  opacity: 0;
+}
+
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;

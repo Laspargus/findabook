@@ -1,7 +1,7 @@
-const apikey = window.prompt("Insert your OpenMovieApiKey");
+//const apikey = window.prompt("Insert your OpenMovieApiKey");
 
 const searchMovie = (searchValue) => {
-  let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
+  let url = `https://www.omdbapi.com/?apikey=b9017d50&s=${searchValue}`;
   getMovies(url);
 };
 
@@ -13,7 +13,7 @@ const getMovies = (url) => {
 };
 
 const searchSpecificMovie = (imdbId) => {
-  let urlOne = `https://www.omdbapi.com/?apikey=${apikey}&i=${imdbId}`;
+  let urlOne = `https://www.omdbapi.com/?apikey=b9017d50&i=${imdbId}`;
   getSpecificMovie(urlOne);
 };
 
@@ -36,7 +36,7 @@ const displayPreview = (data) => {
     let imdbId = data[i].imdbID;
 
     document.querySelector("#movieList").innerHTML += `
-    <div class="card mb-3">
+    <div class="not-visible previewMovie card mb-3">
     <div class="row no-gutters">
       <div class="col-md-3">
       <img style="width:150px" src="${image}" class="card-img" alt="${title}" />
@@ -58,6 +58,20 @@ const displayPreview = (data) => {
   </div>
     `;
   }
+  let observer = new IntersectionObserver(
+    (observables) => {
+      observables.forEach((observable) => {
+        if (observable.intersectionRatio > 0.9) {
+          observable.target.classList.remove("not-visible");
+          console.log("item visible");
+        }
+      });
+    },
+    { threshold: [0.9] }
+  );
+
+  let movies = document.querySelectorAll(".previewMovie");
+  movies.forEach((movie) => observer.observe(movie));
 };
 
 const displayModale = (data) => {
