@@ -99,10 +99,10 @@ const displayModale = (data) => {
             <small class="text-muted">${date}</small>
           </p>
           <p class="card-text">
-          <iframe id="inlineFrameExample"
-            title="Inline Frame Example"
+          <iframe id="videoSpiderIframe"
+            title="${title}"
             width="300"
-            height="200"
+            height="300"
             src="https://videospider.stream/personal?key=erthUSyaq4QJz9EZ&video_id=${imdbId}">
           </iframe>
         </p>
