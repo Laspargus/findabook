@@ -1,5 +1,8 @@
+const apikey = window.prompt(Insert your OpenMovieApiKey);
+
+
 const searchMovie = (searchValue) => {
-  let url = `https://www.omdbapi.com/?apikey=${openmovieKey}&s=${searchValue}`;
+  let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
   console.log(url);
   getMovies(url);
 };
@@ -12,7 +15,7 @@ const getMovies = (url) => {
 };
 
 const searchSpecificMovie = (imdbId) => {
-  let urlOne = `https://www.omdbapi.com/?apikey=${openmovieKey}&i=${imdbId}`;
+  let urlOne = `https://www.omdbapi.com/?apikey=${apikey}&i=${imdbId}`;
   getSpecificMovie(urlOne);
 };
 
