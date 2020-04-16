@@ -1,5 +1,29 @@
 const apikey = window.prompt("Insert your OpenMovieApiKey");
 
+////FUNCTION TO GET VIDEO TRAILER
+const getMovieDbUrl = (imdbId) => {
+  let url = `https://api.themoviedb.org/3/movie/${imdbId}/videos?api_key=c5d88044659a5ab6d5965a2c9ef028e0&language=en-US`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((response) => findYouTubeId(response.results))
+    .catch((error) => console.error("error:", error));
+};
+
+const findYouTubeId = (data) => {
+  console.log(data[0].key);
+  let youtubeId = data[0].key;
+  document.querySelector("#video").innerHTML = `
+  <iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/${youtubeId}"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>`;
+};
+
+////FUNCTION TO GET LIST OF MOVIES
 const searchMovie = (searchValue) => {
   let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
   getMovies(url);
@@ -12,6 +36,7 @@ const getMovies = (url) => {
     .catch((error) => console.error("error:", error));
 };
 
+////// FUNCTION TO GET SPECIFIC MOVIE
 const searchSpecificMovie = (imdbId) => {
   let urlOne = `https://www.omdbapi.com/?apikey=${apikey}&i=${imdbId}`;
   getSpecificMovie(urlOne);
@@ -26,6 +51,7 @@ const getSpecificMovie = (urlOne) => {
     .catch((error) => console.error("error:", error));
 };
 
+///// FUNCTION TO DISPLAY LIST OF MOVIES
 const displayPreview = (data) => {
   document.querySelector("#movieList").innerHTML = "";
 
@@ -73,6 +99,8 @@ const displayPreview = (data) => {
   movies.forEach((movie) => observer.observe(movie));
 };
 
+///////// FUNCTION TO GET MODAL
+
 const displayModale = (data) => {
   console.log(data);
   let date = data.Year;
@@ -80,8 +108,6 @@ const displayModale = (data) => {
   let image = data.Poster;
   let description = data.Plot;
   let imdbId = data.imdbID;
-  //const ip = monAdresseIP();
-  let spiderUrl = `https://vsrequest.video/request.php?key=erthUSyaq4QJz9EZ&secret_key=mizga33w8bw912b0m712vjg7dp396c&video_id=${imdbId}&ip=85.68.17.142`;
 
   console.log(imdbId);
 
@@ -102,14 +128,8 @@ const displayModale = (data) => {
           <p class="card-text">
             <small class="text-muted">${date}</small>
           </p>
-          <p class="card-text">
-          <iframe id="videoSpiderIframe"
-            title="${title}"
-            width="300"
-            height="300"
-            src=${spiderUrl}>
-          </iframe>
-        </p>
+          <p id="video" class="card-text">
+          </p>
         </div>
       </div>
     </div>
@@ -129,6 +149,7 @@ const displayModale = (data) => {
       myModal.style.display = "none";
     }
   };
+  getMovieDbUrl(imdbId);
 };
 
 document.querySelector("#searchForm").addEventListener("submit", (event) => {
