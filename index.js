@@ -137,16 +137,19 @@ const displayModale = (data) => {
   `;
 
   let myModal = document.getElementById("myModal");
+  let video = document.querySelector("#video");
   myModal.style.display = "block";
 
   let span = document.getElementsByClassName("close")[0];
   span.onclick = function () {
     myModal.style.display = "none";
+    video.style.display = "none";
   };
 
   window.onclick = function (event) {
     if (event.target == myModal) {
       myModal.style.display = "none";
+      video.style.display = "none";
     }
   };
   getMovieDbUrl(imdbId);
