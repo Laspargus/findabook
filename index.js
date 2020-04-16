@@ -63,7 +63,6 @@ const displayPreview = (data) => {
       observables.forEach((observable) => {
         if (observable.intersectionRatio > 0.9) {
           observable.target.classList.remove("not-visible");
-          console.log("item visible");
         }
       });
     },
@@ -112,8 +111,6 @@ const displayModale = (data) => {
     </div>
   </div>
   `;
-
-  console.log(date, title, image, description);
 
   let myModal = document.getElementById("myModal");
   myModal.style.display = "block";
