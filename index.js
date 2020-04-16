@@ -67,12 +67,12 @@ const displayModale = (data) => {
   let description = data.Plot;
 
   document.getElementById("movieContent").innerHTML = `
-  <div class="card mb-3">
+  <div class="mb-3">
     <div class="row no-gutters">
-      <div class="col-md-6">
-      <img style="width:300px" src="${image}" class="card-img" alt="${title}" />
+      <div class="col-md-5">
+      <img style="width:350px" src="${image}" class="card-img" alt="${title}" />
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="card-body">
           <h3 class="card-text">
           ${title}
