@@ -1,9 +1,7 @@
-const apikey = window.prompt(Insert your OpenMovieApiKey);
-
+const apikey = window.prompt("Insert your OpenMovieApiKey");
 
 const searchMovie = (searchValue) => {
   let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
-  console.log(url);
   getMovies(url);
 };
 
