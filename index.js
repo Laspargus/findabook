@@ -79,7 +79,11 @@ const displayModale = (data) => {
   let title = data.Title;
   let image = data.Poster;
   let description = data.Plot;
-  let imdbId = data.imdbId;
+  let imdbId = data.imdbID;
+  //const ip = monAdresseIP();
+  let spiderUrl = `https://vsrequest.video/request.php?key=erthUSyaq4QJz9EZ&secret_key=mizga33w8bw912b0m712vjg7dp396c&video_id=${imdbId}&ip=85.68.17.142`;
+
+  console.log(imdbId);
 
   document.getElementById("movieContent").innerHTML = `
   <div class="mb-3">
@@ -103,7 +107,7 @@ const displayModale = (data) => {
             title="${title}"
             width="300"
             height="300"
-            src="https://videospider.stream/personal?key=erthUSyaq4QJz9EZ&video_id=${imdbId}">
+            src=${spiderUrl}>
           </iframe>
         </p>
         </div>
