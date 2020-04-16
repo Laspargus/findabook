@@ -1,5 +1,6 @@
 const searchMovie = (searchValue) => {
-  let url = `https://www.omdbapi.com/?apikey=b9017d50&s=${searchValue}`;
+  let url = `https://www.omdbapi.com/?apikey=${openmovieKey}&s=${searchValue}`;
+  console.log(url);
   getMovies(url);
 };
 
@@ -11,7 +12,7 @@ const getMovies = (url) => {
 };
 
 const searchSpecificMovie = (imdbId) => {
-  let urlOne = `https://www.omdbapi.com/?apikey=b9017d50&i=${imdbId}`;
+  let urlOne = `https://www.omdbapi.com/?apikey=${openmovieKey}&i=${imdbId}`;
   getSpecificMovie(urlOne);
 };
 
