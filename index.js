@@ -1,7 +1,7 @@
-//const apikey = window.prompt("Insert your OpenMovieApiKey");
+const apikey = window.prompt("Insert your OpenMovieApiKey");
 
 const searchMovie = (searchValue) => {
-  let url = `https://www.omdbapi.com/?apikey=b9017d50&s=${searchValue}`;
+  let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
   getMovies(url);
 };
 
@@ -13,7 +13,7 @@ const getMovies = (url) => {
 };
 
 const searchSpecificMovie = (imdbId) => {
-  let urlOne = `https://www.omdbapi.com/?apikey=b9017d50&i=${imdbId}`;
+  let urlOne = `https://www.omdbapi.com/?apikey=${apikey}&i=${imdbId}`;
   getSpecificMovie(urlOne);
 };
 
@@ -48,7 +48,7 @@ const displayPreview = (data) => {
           </p>
           <p class="card-text">
             <small class="text-muted">${date}</small>
-          </p>
+          </p>  
         </div>
       </div>
       <div class="pt-5 col-md-2">
@@ -80,6 +80,7 @@ const displayModale = (data) => {
   let title = data.Title;
   let image = data.Poster;
   let description = data.Plot;
+  let imdbId = data.imdbId;
 
   document.getElementById("movieContent").innerHTML = `
   <div class="mb-3">
@@ -98,6 +99,14 @@ const displayModale = (data) => {
           <p class="card-text">
             <small class="text-muted">${date}</small>
           </p>
+          <p class="card-text">
+          <iframe id="inlineFrameExample"
+            title="Inline Frame Example"
+            width="300"
+            height="200"
+            src="https://videospider.stream/personal?key=erthUSyaq4QJz9EZ&video_id=${imdbId}">
+          </iframe>
+        </p>
         </div>
       </div>
     </div>
