@@ -1,4 +1,4 @@
-const apikey = window.prompt("Insert your OpenMovieApiKey");
+//const apikey = window.prompt("Insert your OpenMovieApiKey");
 
 ////FUNCTION TO GET VIDEO TRAILER
 const getMovieDbUrl = (imdbId) => {
@@ -25,7 +25,7 @@ const findYouTubeId = (data) => {
 
 ////FUNCTION TO GET LIST OF MOVIES
 const searchMovie = (searchValue) => {
-  let url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
+  let url = `https://www.omdbapi.com/?apikey=b9017d50&s=${searchValue}`;
   getMovies(url);
 };
 
@@ -38,7 +38,7 @@ const getMovies = (url) => {
 
 ////// FUNCTION TO GET SPECIFIC MOVIE
 const searchSpecificMovie = (imdbId) => {
-  let urlOne = `https://www.omdbapi.com/?apikey=${apikey}&i=${imdbId}`;
+  let urlOne = `https://www.omdbapi.com/?apikey=b9017d50&i=${imdbId}`;
   getSpecificMovie(urlOne);
 };
 
