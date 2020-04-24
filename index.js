@@ -108,8 +108,6 @@ const displayButton = () => {
 
 const saveSelection = () => {
   getSelections();
-  document.querySelector("#loader").classList.remove("not-visible");
-
   fetch("https://book-suggestion.herokuapp.com/selections", {
     method: "POST",
     headers: {
@@ -225,7 +223,17 @@ const findTwinSelections = (allDbSelections) => {
       }
     });
   });
-  getFinalArray();
+  if ((recommendations.length = 0)) {
+    document.querySelector("#recommendation").innerHTML = `
+    <div class="alert alert-warning" role="alert">
+      We were not able to match your selection.
+      <a class= "btn btn-warning" href="/"> Try another one </a>
+    </div>
+    `;
+    return;
+  } else {
+    getFinalArray();
+  }
 };
 
 const getFinalArray = () => {
