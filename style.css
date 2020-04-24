@@ -1,54 +1,123 @@
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 10px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
 
-#movieContent {
+#bookContent {
   height: 500px;
 }
 
-.previewMovie {
+/* .previewBook {
   transform: translateX(0);
   opacity: 1;
   transition: transform 0.4s, opacity 0.4s;
 }
 
-.previewMovie.not-visible {
+.previewBook.not-visible {
   transform: translateX(50px);
   opacity: 0;
+} */
+
+h5.card-title,
+p.card-text {
+  font-size: 0.75rem !important;
 }
 
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+/* #selection {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+} */
+
+.not-visible {
+  display: none !important;
+}
+
+.intro {
+  background-image: url("images/bg_book_small.jpg");
+  background-position: center;
   height: 600px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.text-intro {
+  padding-top: 80px;
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+}
+p.card-text {
+  font-size: 16px !important;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.form-title {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.recommendation-title {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.form-inline .form-control {
+  width: 250px !important;
+}
+
+small {
+  color: #6c7b9d;
+  font-style: italic;
+}
+
+/****************   LOADER  **************/
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #8ec87a;
+  font-size: 10px;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  /* position: absolute; */
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
 }

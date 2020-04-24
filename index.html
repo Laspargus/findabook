@@ -10,25 +10,45 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <title>Open Movie</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+
+    <title>Open Book</title>
   </head>
   <body>
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div style="width: 80%;" class="m-5 modal-content">
-        <span class="close">&times;</span>
-        <div id="movieContent"></div>
+    <div class="my-auto intro">
+      <div class="text-intro text-center">
+        List 5 books you liked, we'll tell you the next 5
       </div>
     </div>
-
     <div class="container">
-      <form id="searchForm" class="mt-5 form-inline">
-        <div class="form-group mx-sm-3 mb-2">
+      <div id="howtoremove" class="not-visible text-center mt-3">
+        <small>Click on a book to remove from selection</small>
+      </div>
+
+      <div class="row mt-3 not-visible" id="selection"></div>
+
+      <div
+        class="mt-5 col-md-10 text-center center-block not-visible"
+        id="validate-selection"
+      ></div>
+      <div class="mt-5" id="recommendation"></div>
+
+      <p class="mt-5 form-title text-info" for="booksearch">
+        Look for a book and add it to your top 5
+      </p>
+      <form id="searchForm" class="form-inline">
+        <div class="form-group mr-3 mb-2">
           <input
             type="text"
             class="form-control"
-            id="moviesearch"
-            placeholder="Search movie"
+            id="booksearch"
+            placeholder="ex : Les pilliers de la terre"
           />
         </div>
         <input
@@ -38,10 +58,119 @@
           class="btn btn-info mb-2"
         />
       </form>
-      <!-- The Modal -->
 
-      <div class="mt-5" id="movieList"></div>
+      <div
+        class="alert alert-warning not-visible"
+        id="alert-message"
+        role="alert"
+      ></div>
+      <div class="text-center mt-3">
+        <small>Click on a book to add it to your Top 5</small>
+      </div>
+
+      <div class="row mt-1" id="bookList">
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Les Piliers de la Terre', 'Ken FOLLETT','http://books.google.com/books/content?id=ThihCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221190777','9782221190777', '')"
+            src="http://books.google.com/books/content?id=ThihCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Les Piliers de la Terre de Ken Follett (Analyse de l\'oeuvre)', 'Marie-Charlotte Schneider','http://books.google.com/books/content?id=RY2MgBX1XnsC&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782806253644','9782806253644', '')"
+            src="http://books.google.com/books/content?id=RY2MgBX1XnsC&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Notre-Dame', 'Ken FOLLETT','http://books.google.com/books/content?id=SNqdDwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221245576','9782221245576', '')"
+            src="http://books.google.com/books/content?id=SNqdDwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Le Crépuscule et l\'Aube', 'Ken FOLLETT','http://books.google.com/books/content?id=A9zODwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;source=gbs_api','9782221248744','9782221248744', '')"
+            src="http://books.google.com/books/content?id=A9zODwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Un Monde sans fin', 'Ken FOLLETT','http://books.google.com/books/content?id=u-jFlX2hQl8C&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221132128','9782221132128', '')"
+            src="http://books.google.com/books/content?id=u-jFlX2hQl8C&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('La Belle et l\'Oiseau', 'Ken FOLLETT','http://books.google.com/books/content?id=XeuUDwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221242995','9782221242995', '')"
+            src="http://books.google.com/books/content?id=XeuUDwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('La Promesse de l\'ange', 'Frédéric Lenoir','http://books.google.com/books/content?id=0tNDnFkWM8kC&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782226234834','9782226234834', '')"
+            src="http://books.google.com/books/content?id=0tNDnFkWM8kC&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('L\'Appel des étoiles', 'Ken FOLLETT','http://books.google.com/books/content?id=giVKDQAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221198438','9782221198438', '')"
+            src="http://books.google.com/books/content?id=giVKDQAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Le Mystère du gang masqué', 'Ken FOLLETT','http://books.google.com/books/content?id=ZFg8DwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221216316','9782221216316', '')"
+            src="http://books.google.com/books/content?id=ZFg8DwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+
+        <div>
+          <img
+            class="m-3"
+            onclick="selectBook('Une colonne de feu', 'Ken FOLLETT','http://books.google.com/books/content?id=leASDgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api','9782221200865','9782221200865', '')"
+            src="http://books.google.com/books/content?id=leASDgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=5&amp;edge=curl&amp;source=gbs_api"
+            style="width: 150px;"
+          />
+        </div>
+      </div>
+      <div class="mt-5">
+        <p class="mt-5 form-title text-info" for="booksearch">
+          Here is a popular list to help you make your selection
+        </p>
+        <div class="text-center">
+          <small>Click on a book to add it to your Top 5</small>
+        </div>
+
+        <div class="row" id="top100"></div>
+      </div>
     </div>
+    <script src="algo.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
