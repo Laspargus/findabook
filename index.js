@@ -23,7 +23,7 @@ const getBook = (url) => {
     .catch((error) => console.error("error:", error));
 };
 
-getDbBook("http://localhost:3000/books");
+getDbBook("https://book-suggestion.herokuapp.com/books");
 
 const selectBook = (title, author, image, isbn13, isbn10, year) => {
   alertMessage.innerHTML = "";
@@ -110,7 +110,7 @@ const saveSelection = () => {
   getSelections();
   document.querySelector("#loader").classList.remove("not-visible");
 
-  fetch("http://localhost:3000/selections", {
+  fetch("https://book-suggestion.herokuapp.com/selections", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -206,7 +206,7 @@ dislayTop100 = (response) => {
 };
 
 const getSelections = () => {
-  fetch("http://localhost:3000/selections")
+  fetch("https://book-suggestion.herokuapp.com/selections")
     .then((response) => response.json())
     .then((response) => findTwinSelections(response))
     .catch((error) => console.error("error:", error));
