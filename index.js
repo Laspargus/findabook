@@ -223,7 +223,7 @@ const findTwinSelections = (allDbSelections) => {
       }
     });
   });
-  if ((recommendations.length = 0)) {
+  if (recommendations.length == 0) {
     document.querySelector("#recommendation").innerHTML = `
     <div class="alert alert-warning" role="alert">
       We were not able to match your selection.
